@@ -18,10 +18,6 @@ class CommunityApplicationTests implements ApplicationContextAware {
 
 	private ApplicationContext applicationContext;
 
-	@Test
-	void contextLoads() {
-	}
-
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
@@ -29,6 +25,8 @@ class CommunityApplicationTests implements ApplicationContextAware {
 
 	@Test
 	public void testApplicationContext(){
+		System.out.println(applicationContext);
+
 
 	}
 }
