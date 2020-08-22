@@ -1,23 +1,15 @@
-### day 2020/8/20
-删除了index.html一些还未用到的数据模型
-√ 已经添加回去了
-
 ### day 2020/8/21
 修改.gitignore没起效
 git rm -r --cached .    //删除项目缓存即可
 
-### day /2020/8/22
-```
-<div class="col-sm-4">
-    <img th:src="@{/kaptcha}" id="kaptcha" style="width:100px;height:40px;" class="mr-2"/>
-    <a href="javascript:refresh_kaptcha();" class="font-size-12 align-bottom">刷新验证码</a>
-</div>
-```
-修改为
-```
-<div class="col-sm-4">
-    <img th:src="@{/img/captcha.png}" id="kaptcha" style="width:100px;height:40px;" class="mr-2"/>
-    <a href="javascript:refresh_kaptcha();" class="font-size-12 align-bottom">刷新验证码</a>
-</div>
-```
+### day 2020/8/22
+int DEFAULT_EXPIRED_SECONDS = 3600 * 12;//12小时
+int REMEMBER_EXPIRED_SECONDS = 3600 * 24 * 100;//100天
+在
+loginTicket.setExpired(new Date(System.currentTimeMillis() + expiredSeconds * 1000));
+这里超过了int大小上限，所以改为了long
+
+退出登录页面路径
+index.html处修改
+"/logout"(出现匹配错误变成"/login?logout") --> "/out"
 
