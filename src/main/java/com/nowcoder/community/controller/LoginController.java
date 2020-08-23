@@ -159,6 +159,6 @@ public class LoginController implements CommunityConstant {
     public String logout(@CookieValue("ticket") String ticket){
         userService.logout(ticket);
         System.out.println(ticket);
-        return "redirect:/index";
+        return "redirect:/login";
     }
 }
