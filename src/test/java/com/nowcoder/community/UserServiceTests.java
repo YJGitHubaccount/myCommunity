@@ -51,4 +51,9 @@ public class UserServiceTests implements CommunityConstant {
     public void testLogout(){
         userService.logout("8144556ea0b140eea79a1713406a7430");
     }
+
+    @Test
+    public void testUpdatePassword(){
+        userService.updatePassword(153,"19924682983");
+    }
 }
