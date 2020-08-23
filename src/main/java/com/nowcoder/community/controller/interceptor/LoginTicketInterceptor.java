@@ -15,6 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
+/**
+ * 自动获取登录凭证，获取后传给model,最后清除凭证
+ */
+
 @Component
 public class LoginTicketInterceptor implements HandlerInterceptor {
 

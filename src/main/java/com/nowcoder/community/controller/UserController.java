@@ -1,12 +1,11 @@
 package com.nowcoder.community.controller;
 
-import com.nowcoder.community.dao.UserMapper;
+import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.kafka.common.network.Mode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +23,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -55,11 +52,13 @@ public class UserController {
         return "/site/profile";
     }
 
+    @LoginRequired
     @GetMapping(path = "/setting")
     public String getSettingPage(){
         return "/site/setting";
     }
 
+    @LoginRequired
     @PostMapping(path = "/upload")
     public String uploadHeader(MultipartFile headerImage,Model model){
         if (headerImage == null){
@@ -95,6 +94,11 @@ public class UserController {
         return "redirect:/index";
     }
 
+    /**
+     * 浏览器获取头像
+     * @param fileName
+     * @param response
+     */
     @GetMapping(path = "/header/{fileName}")
     public void getHeader(@PathVariable("fileName") String fileName, HttpServletResponse response){
         fileName = uploadPath + "/" + fileName;
@@ -114,6 +118,7 @@ public class UserController {
         }
     }
 
+    @LoginRequired
     @PostMapping(path = "/password")
     public String changePassword(Model model, String oldPassword, String newPassword,String confirmPassword){
         User user = hostHolder.getUser();
