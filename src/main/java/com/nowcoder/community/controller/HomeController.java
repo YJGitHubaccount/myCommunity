@@ -22,10 +22,10 @@ import java.util.Map;
 public class HomeController {
 
     @Autowired
-    DiscussPostService discussPostService;
+    private DiscussPostService discussPostService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @GetMapping(path = "/index")
     public String getIndexPage(Model model, Page page){

@@ -28,6 +28,9 @@ public class SensitiveFilter {
     //根节点
     private TrieNode rootNode = new TrieNode();
 
+    /**
+     * 加载敏感词，初始化前缀树
+     */
     @PostConstruct
     public void init(){
         try(
@@ -44,7 +47,10 @@ public class SensitiveFilter {
         }
     }
 
-    //将敏感词添加到前缀树
+    /**
+     * 将敏感词添加到前缀树
+     * @param keyword 敏感词
+     */
     private void addKeyword(String keyword){
         TrieNode tempNode = rootNode;
         for (int i=0;i<keyword.length();i++){
