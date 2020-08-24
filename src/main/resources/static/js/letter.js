@@ -10,7 +10,7 @@ function send_letter() {
 	var content = $("#message-text").val();
 	$.post(
 
-		CONTEXT_PATH + "/message/send",
+		CONTEXT_PATH + "/letter/send",
 
 		{"toName":targetUser,"content":content},
 

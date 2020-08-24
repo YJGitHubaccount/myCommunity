@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -166,6 +167,35 @@ public class MapperTests implements CommunityConstant {
 
         count = messageMapper.selectLetterUnreadCount(131, "111_131");
         System.out.println(count);
+
+        Message message = new Message();
+        message.setStatus(0);
+        message.setContent("Test11111111");
+        message.setFromId(111);
+        message.setToId(153);
+        message.setCreateTime(new Date());
+        message.setConversationId("111_153");
+        messageMapper.insertMessage(message);
+
+        List<Integer> ids = new ArrayList<>();
+        for (int i=1;i<=5;i++){
+            ids.add(i);
+        }
+        messageMapper.updateStatus(ids,0);
+
+        System.out.println(messageMapper.selectLatestNotice(111,"like"));
+
+        System.out.println(messageMapper.selectNoticeCount(111,"like"));
+
+        System.out.println(messageMapper.selectNoticeUnreadCount(111,null));
+
+        System.out.println(messageMapper.selectNoticeUnreadCount(111,"like"));
+
+        List<Message> messages = messageMapper.selectNotices(111,"like",0,100);
+        for (Message message1 : messages){
+            System.out.println(message1);
+        }
+
     }
 
 }

@@ -46,6 +46,11 @@ public class UserService implements CommunityConstant {
         return userMapper.selectById(id);
     }
 
+    public User findUserByName(String name){
+        return userMapper.selectByName(name);
+    }
+
+
     @Transactional
     public Map<String,Object> register(User user){
         Map<String,Object> map = new HashMap<>();
@@ -184,4 +189,6 @@ public class UserService implements CommunityConstant {
         User user = userMapper.selectById(userId);
         return userMapper.updatePassword(userId,CommunityUtil.md5(newPassword + user.getSalt()));
     }
+
+
 }
