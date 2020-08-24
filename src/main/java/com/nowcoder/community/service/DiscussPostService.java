@@ -11,7 +11,7 @@ import org.springframework.web.util.HtmlUtils;
 
 import java.util.List;
 
-@Transactional
+
 @Service
 public class DiscussPostService {
     @Autowired
@@ -28,6 +28,7 @@ public class DiscussPostService {
         return discussPostMapper.selectDiscussPostRows(userId);
     }
 
+    @Transactional
     public int addDiscussPost(DiscussPost discussPost){
         if (discussPost == null){
             throw new IllegalArgumentException("参数不能为空!");
@@ -46,5 +47,10 @@ public class DiscussPostService {
 
     public DiscussPost findDiscussPostById(int id){
         return discussPostMapper.selectDiscussPostById(id);
+    }
+
+    @Transactional
+    public int updateCommentCount(int id, int commentCount){
+        return discussPostMapper.updateCommentCount(id,commentCount);
     }
 }

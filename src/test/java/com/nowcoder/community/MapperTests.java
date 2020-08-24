@@ -1,12 +1,16 @@
 package com.nowcoder.community;
 
+import com.nowcoder.community.dao.CommentMapper;
 import com.nowcoder.community.dao.DiscussPostMapper;
 import com.nowcoder.community.dao.LoginTicketMapper;
 import com.nowcoder.community.dao.UserMapper;
+import com.nowcoder.community.entity.Comment;
 import com.nowcoder.community.entity.DiscussPost;
 import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
+import com.nowcoder.community.util.CommunityConstant;
 import org.checkerframework.checker.units.qual.A;
+import org.checkerframework.checker.units.qual.C;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +25,7 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration(classes = CommunityApplication.class)
-public class MapperTests {
+public class MapperTests implements CommunityConstant {
 
     @Autowired
     UserMapper userMapper;
@@ -31,6 +35,9 @@ public class MapperTests {
 
     @Autowired
     LoginTicketMapper loginTicketMapper;
+
+    @Autowired
+    CommentMapper commentMapper;
 
     @Test
     public void testUser(){
@@ -122,5 +129,23 @@ public class MapperTests {
         discussPost.setCommentCount(1000);
         discussPost.setScore(100.0);
         System.out.println(discussPostMapper.insertDiscussPost(discussPost));
+    }
+
+    @Test
+    public void testUpdateCommentCount(){
+        discussPostMapper.updateCommentCount(109,100);
+    }
+
+    @Test
+    public void testinsertComment(){
+        Comment comment = new Comment();
+        comment.setContent("Test");
+        comment.setEntityId(276);
+        comment.setCreateTime(new Date());
+        comment.setEntityType(ENTITY_TYPE_POST);
+        comment.setTargetId(0);
+        comment.setStatus(0);
+        comment.setUserId(153);
+        commentMapper.insertComment(comment);
     }
 }

@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-@Transactional
+
 @Service
 public class UserService implements CommunityConstant {
     @Autowired
@@ -46,6 +46,7 @@ public class UserService implements CommunityConstant {
         return userMapper.selectById(id);
     }
 
+    @Transactional
     public Map<String,Object> register(User user){
         Map<String,Object> map = new HashMap<>();
         //空值处理
@@ -100,6 +101,7 @@ public class UserService implements CommunityConstant {
         return map;
     }
 
+    @Transactional
     public int activation(int userId,String code){
         User user = userMapper.selectById(userId);
         if (user.getStatus() == 1){
@@ -119,6 +121,7 @@ public class UserService implements CommunityConstant {
      * @param expiredSeconds
      * @return
      */
+    @Transactional
     public Map<String,Object> login(String username, String password, long expiredSeconds){
         Map<String,Object> map = new HashMap<>();
 
@@ -162,6 +165,7 @@ public class UserService implements CommunityConstant {
         return map;
     }
 
+    @Transactional
     public void logout(String ticket){
         loginTicketMapper.updateStatus(ticket,1);
     }
@@ -170,10 +174,12 @@ public class UserService implements CommunityConstant {
         return loginTicketMapper.selectByTicket(ticket);
     }
 
+    @Transactional
     public int updateHeader(long userId,String headerUrl){
         return userMapper.updateHeader(userId,headerUrl);
     }
 
+    @Transactional
     public int updatePassword(long userId,String newPassword){
         User user = userMapper.selectById(userId);
         return userMapper.updatePassword(userId,CommunityUtil.md5(newPassword + user.getSalt()));

@@ -56,7 +56,7 @@ public class DiscussPostController implements CommunityConstant {
         discussPostService.addDiscussPost(discussPost);
 
         //报错情况将来统一处理
-        return CommunityUtil.getJsonString(0,"发布成功!");
+        return CommunityUtil.getJsonString(0,"发布成功!!!");
     }
 
     @GetMapping(path = "/detail/{discussPostId}")
