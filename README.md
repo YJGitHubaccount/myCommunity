@@ -13,3 +13,13 @@ loginTicket.setExpired(new Date(System.currentTimeMillis() + expiredSeconds * 10
 index.html处修改
 "/logout"(出现匹配错误变成"/login?logout") --> "/out"
 
+### day 2020/8/24
+发布帖子使用了异步请求,配合弹出显示框
+发布评论回复是普通的post请求
+
+letter.html -> 使用了码云版本
+notice.html -> 使用了码云版本
+notice-detail.html -> 使用了码云版本
+letter-detail.html -> 使用了码云版本
+
+

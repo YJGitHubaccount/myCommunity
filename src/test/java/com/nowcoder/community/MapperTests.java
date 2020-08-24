@@ -1,13 +1,7 @@
 package com.nowcoder.community;
 
-import com.nowcoder.community.dao.CommentMapper;
-import com.nowcoder.community.dao.DiscussPostMapper;
-import com.nowcoder.community.dao.LoginTicketMapper;
-import com.nowcoder.community.dao.UserMapper;
-import com.nowcoder.community.entity.Comment;
-import com.nowcoder.community.entity.DiscussPost;
-import com.nowcoder.community.entity.LoginTicket;
-import com.nowcoder.community.entity.User;
+import com.nowcoder.community.dao.*;
+import com.nowcoder.community.entity.*;
 import com.nowcoder.community.util.CommunityConstant;
 import org.checkerframework.checker.units.qual.A;
 import org.checkerframework.checker.units.qual.C;
@@ -38,6 +32,9 @@ public class MapperTests implements CommunityConstant {
 
     @Autowired
     CommentMapper commentMapper;
+
+    @Autowired
+    MessageMapper messageMapper;
 
     @Test
     public void testUser(){
@@ -148,4 +145,27 @@ public class MapperTests implements CommunityConstant {
         comment.setUserId(153);
         commentMapper.insertComment(comment);
     }
+
+    @Test
+    public void testMessageMapper(){
+        List<Message> list = messageMapper.selectConversations(111, 0, 20);
+        for (Message message : list) {
+            System.out.println(message);
+        }
+
+        int count = messageMapper.selectConversationCount(111);
+        System.out.println(count);
+
+        list = messageMapper.selectLetters("111_112", 0, 10);
+        for (Message message : list) {
+            System.out.println(message);
+        }
+
+        count = messageMapper.selectLetterCount("111_112");
+        System.out.println(count);
+
+        count = messageMapper.selectLetterUnreadCount(131, "111_131");
+        System.out.println(count);
+    }
+
 }

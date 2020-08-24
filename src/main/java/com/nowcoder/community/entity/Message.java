@@ -6,7 +6,7 @@ public class Message {
     private int id;
     private int fromId;
     private int toId;
-    private int conversationId;
+    private String conversationId;
     private String content;
     private int status;
     private Date createTime;
@@ -35,11 +35,11 @@ public class Message {
         this.toId = toId;
     }
 
-    public int getConversationId() {
+    public String getConversationId() {
         return conversationId;
     }
 
-    public void setConversationId(int conversationId) {
+    public void setConversationId(String conversationId) {
         this.conversationId = conversationId;
     }
 
