@@ -113,7 +113,7 @@ public class MapperTests {
     @Test
     public void testInsertDiscussPost(){
         DiscussPost discussPost = new DiscussPost();
-        discussPost.setUserId((long)153);
+        discussPost.setUserId(153);
         discussPost.setTitle("Test title");
         discussPost.setContent("Test content");
         discussPost.setType(0);

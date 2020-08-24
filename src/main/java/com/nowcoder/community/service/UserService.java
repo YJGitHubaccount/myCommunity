@@ -12,6 +12,7 @@ import org.apache.kafka.common.security.auth.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
@@ -20,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+@Transactional
 @Service
 public class UserService implements CommunityConstant {
     @Autowired

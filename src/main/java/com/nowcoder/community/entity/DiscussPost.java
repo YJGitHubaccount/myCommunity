@@ -3,8 +3,8 @@ package com.nowcoder.community.entity;
 import java.util.Date;
 
 public class DiscussPost {
-    private Long id;//page id
-    private Long userId;
+    private int id;//page id
+    private int userId;
     private String title;
     private String content;
     private Integer type;
@@ -13,19 +13,19 @@ public class DiscussPost {
     private Integer commentCount;
     private Double score;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

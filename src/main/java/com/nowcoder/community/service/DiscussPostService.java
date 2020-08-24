@@ -5,10 +5,13 @@ import com.nowcoder.community.entity.DiscussPost;
 import com.nowcoder.community.util.SensitiveFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.util.HtmlUtils;
 
 import java.util.List;
 
+@Transactional
 @Service
 public class DiscussPostService {
     @Autowired
@@ -39,5 +42,9 @@ public class DiscussPostService {
         discussPost.setContent(sensitiveFilter.filter(discussPost.getContent()));
 
         return discussPostMapper.insertDiscussPost(discussPost);
+    }
+
+    public DiscussPost findDiscussPostById(int id){
+        return discussPostMapper.selectDiscussPostById(id);
     }
 }
