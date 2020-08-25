@@ -2,8 +2,10 @@ package com.nowcoder.community.controller;
 
 import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.User;
+import com.nowcoder.community.service.FollowService;
 import com.nowcoder.community.service.LikeService;
 import com.nowcoder.community.service.UserService;
+import com.nowcoder.community.util.CommunityConstant;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
 import org.apache.commons.lang3.StringUtils;
@@ -27,7 +29,7 @@ import java.io.OutputStream;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController implements CommunityConstant {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -39,6 +41,9 @@ public class UserController {
 
     @Autowired
     private LikeService likeService;
+
+    @Autowired
+    private FollowService followService;
 
     @Value("${community.path.domain}")
     private String domain;
@@ -66,9 +71,9 @@ public class UserController {
         }
 
         //写死
-        model.addAttribute("hasFollowed",true);
-        model.addAttribute("followeeCount",10);
-        model.addAttribute("followerCount",10);
+        model.addAttribute("hasFollowed",followService.hasFollowed(loginUser.getId(),ENTITY_TYPE_USER,user.getId()));
+        model.addAttribute("followeeCount",followService.findFolloweeCount(userId,ENTITY_TYPE_USER));
+        model.addAttribute("followerCount",followService.findFollowerCount(ENTITY_TYPE_USER,userId));
 
         return "/site/profile";
     }
