@@ -1,6 +1,5 @@
 package com.nowcoder.community.controller;
 
-import com.nowcoder.community.dao.MessageMapper;
 import com.nowcoder.community.entity.Message;
 import com.nowcoder.community.entity.Page;
 import com.nowcoder.community.entity.User;
@@ -9,10 +8,7 @@ import com.nowcoder.community.service.MessageService;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +32,7 @@ public class MessageController {
 
     @GetMapping(path = "/letter/list")
     public String getLetterList(Model model, Page page){
+
         User user = hostHolder.getUser();
         //分页信息
         page.setPath("/letter/list");
@@ -116,6 +113,7 @@ public class MessageController {
     @PostMapping(path = "/letter/send")
     @ResponseBody
     public String sendLetter(String toName,String content){
+
         User target = userService.findUserByName(toName);
         if (target == null){
             return CommunityUtil.getJsonString(1,"目标用户不存在!");
@@ -150,7 +148,6 @@ public class MessageController {
 
     @GetMapping(path = "/notice/detail")
     public String getNoticeDetail(){
-
         return "/site/notice-detail";
     }
 }
