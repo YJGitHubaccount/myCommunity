@@ -2,6 +2,7 @@ package com.nowcoder.community.controller;
 
 import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.User;
+import com.nowcoder.community.service.LikeService;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
@@ -36,6 +37,9 @@ public class UserController {
     @Autowired
     private HostHolder hostHolder;
 
+    @Autowired
+    private LikeService likeService;
+
     @Value("${community.path.domain}")
     private String domain;
 
@@ -47,8 +51,25 @@ public class UserController {
 
     @GetMapping(path = "/profile/{userId}")
     public String getProfilePage(Model model, @PathVariable int userId){
+        //个人页面的用户
         User user = userService.findUserById(userId);
+        if (user == null){
+            throw new IllegalArgumentException("用户不存在");
+        }
         model.addAttribute("user",user);
+        model.addAttribute("userLikeCount",likeService.findUserLikeCount(userId));
+
+        //当前登录用户
+        User loginUser = hostHolder.getUser();
+        if (userId != loginUser.getId()){
+            model.addAttribute("loginUser",loginUser);
+        }
+
+        //写死
+        model.addAttribute("hasFollowed",true);
+        model.addAttribute("followeeCount",10);
+        model.addAttribute("followerCount",10);
+
         return "/site/profile";
     }
 

@@ -25,10 +25,10 @@ public class LikeController {
      */
     @PostMapping(path = "/like")
     @ResponseBody
-    public String like(int entityType, int entityId){
+    public String like(int entityType, int entityId,int entityUserId){
         int userId = hostHolder.getUser().getId();
         //点赞
-        likeService.like(userId,entityType,entityId);
+        likeService.like(userId,entityType,entityId,entityUserId);
         //数量
         long likeCount = likeService.findEntityLikeCount(entityType,entityId);
         //状态
