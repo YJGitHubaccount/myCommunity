@@ -93,6 +93,7 @@ public class FollowController implements CommunityConstant{
                 if (hostHolder.getUser() == null){
                     map.put("hasFollowed",false);
                 }
+                assert (u != null);
                 map.put("hasFollowed",followService.hasFollowed(hostHolder.getUser().getId(),ENTITY_TYPE_USER,u.getId()));
             }
         }

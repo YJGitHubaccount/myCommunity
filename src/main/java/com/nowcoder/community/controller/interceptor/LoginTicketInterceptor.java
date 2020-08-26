@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**
- * 自动获取登录凭证，获取后传给model,最后清除凭证
+ * 每次请求，自动拦截获取登录凭证，获取后传给model,最后清除凭证
  */
 
 @Component

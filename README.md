@@ -24,6 +24,9 @@ letter-detail.html -> 使用了码云版本
 
 
 ### day 2020/8/25
-只有登录的人可以点赞,否则会报错
-profile.html 很多没有配置 个人信息 我的帖子 我的回复 
+- 只有登录的人可以点赞,否则会报错
+
+- profile.html 我的帖子 我的回复 链接没有设置
+
+- index.html 消息 -> th:text="${allUnreadCount!=0?allUnreadCount:''}" 还未更改
 
