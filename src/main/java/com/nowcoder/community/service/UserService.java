@@ -1,6 +1,5 @@
 package com.nowcoder.community.service;
 
-import com.nowcoder.community.dao.LoginTicketMapper;
 import com.nowcoder.community.dao.UserMapper;
 import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
@@ -44,10 +43,10 @@ public class UserService implements CommunityConstant {
     @Value("${server.servlet.context-path}")
     private String contextPath;
 
-    public User findUserById(long id){
-        User user = getCache((int) id);
+    public User findUserById(int id){
+        User user = getCache(id);
         if (user == null){
-            user = init((int) id);
+            user = init(id);
         }
         return user;
     }
@@ -203,7 +202,7 @@ public class UserService implements CommunityConstant {
     }
 
     @Transactional
-    public int updatePassword(long userId,String newPassword){
+    public int updatePassword(int userId,String newPassword){
         User user = findUserById(userId);
         int result = userMapper.updatePassword(userId,CommunityUtil.md5(newPassword + user.getSalt()));
         clearCache((int) userId);

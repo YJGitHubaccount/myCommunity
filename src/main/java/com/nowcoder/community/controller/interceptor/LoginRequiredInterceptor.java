@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 public class LoginRequiredInterceptor implements HandlerInterceptor {
 
     @Autowired
-    HostHolder hostHolder;
+    private HostHolder hostHolder;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class LoginTicket {
     private Long id;
-    private Long userId;
+    private int userId;
     private String ticket;
     private int status;
     private Date expired;
@@ -17,11 +17,11 @@ public class LoginTicket {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

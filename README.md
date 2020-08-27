@@ -28,5 +28,14 @@ letter-detail.html -> 使用了码云版本
 
 - profile.html 我的帖子 我的回复 链接没有设置
 
-- index.html 消息 -> th:text="${allUnreadCount!=0?allUnreadCount:''}" 还未更改
+- index.html 消息 -> th:text="${allUnreadCount!=0?allUnreadCount:''}" 还未更改 --> √
 
+
+### day 2020/8/26
+- zookeeper,kafka要命令行开启才能用
+- bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+- bin\windows\kafka-server-start.bat config\server.properties
+
+
+### day 2020/8/27
+- 朋友私信处用户头像的链接 --> √

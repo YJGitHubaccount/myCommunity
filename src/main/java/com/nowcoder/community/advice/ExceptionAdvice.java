@@ -30,7 +30,7 @@ public class ExceptionAdvice {
 
         //判断异步请求还是普通请求,异步返回json字符串，普通则重定向
         String xRequestedWith = request.getHeader("x-requested-with");
-        if (xRequestedWith.equals("XMLHttpRequest")){
+        if (xRequestedWith != null && xRequestedWith.equals("XMLHttpRequest")){
             response.setContentType("application/plain;charset=utf-8");
             PrintWriter printWriter = response.getWriter();
             printWriter.write(CommunityUtil.getJsonString(1,"服务器异常!"));

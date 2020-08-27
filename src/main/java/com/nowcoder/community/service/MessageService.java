@@ -50,7 +50,7 @@ public class MessageService {
         return messageMapper.updateStatus(ids,1);
     }
 
-    Message findLatestNotice(int userId, String topic){
+    public Message findLatestNotice(int userId, String topic){
         return messageMapper.selectLatestNotice(userId,topic);
     }
 
@@ -65,4 +65,6 @@ public class MessageService {
     public List<Message> findNotices(int userId, String topic, int offset, int limit) {
         return messageMapper.selectNotices(userId, topic, offset, limit);
     }
+
+
 }
