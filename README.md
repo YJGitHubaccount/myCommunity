@@ -41,3 +41,4 @@ letter-detail.html -> 使用了码云版本
 - 朋友私信处用户头像的链接 --> √
 - elasticsearch 7.9.0
 - java 14 -> 12
+- 由于Elasticsearch版本API变化较大，先进行下一节
