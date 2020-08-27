@@ -39,3 +39,5 @@ letter-detail.html -> 使用了码云版本
 
 ### day 2020/8/27
 - 朋友私信处用户头像的链接 --> √
+- elasticsearch 7.9.0
+- java 14 -> 12
